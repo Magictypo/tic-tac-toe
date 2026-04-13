@@ -1,0 +1,167 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* Status area styling */
+#status {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Board styling with CSS Grid */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+/* Cell styling */
+.cell {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+}
+
+/* Cell content styling for X and O */
+.cell.x {
+    color: #00d9ff;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.7);
+}
+
+.cell.o {
+    color: #ff6b6b;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.7);
+}
+
+/* Disabled cell (already clicked) */
+.cell.taken {
+    cursor: default;
+}
+
+.cell.taken:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Result message area */
+#result {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 15px;
+    min-height: 50px;
+    font-weight: bold;
+}
+
+#result.win {
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+#result.draw {
+    color: #ffd93d;
+    text-shadow: 0 0 15px rgba(255, 217, 61, 0.7);
+}
+
+/* Reset button styling */
+#reset {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+    color: #1a1a2e;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.5);
+}
+
+#reset:active {
+    transform: translateY(0);
+}
+
+/* Animation for win message */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 400px) {
+    .board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+    
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
